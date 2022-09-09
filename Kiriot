@@ -1,0 +1,78 @@
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+game.Players.LocalPlayer.CharacterAdded:Wait()
+
+function Dungeon(x,y)
+    game:GetService("ReplicatedStorage").Shared.Teleport.StartRaid:FireServer(x,y)
+end
+local a = game:GetService("ReplicatedStorage"):WaitForChild("ActiveMission").Value
+local b = game:GetService("ReplicatedStorage").Shared.Missions.GetDifficulty:InvokeServer()
+local towerEnd = game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("TowerFinish").TowerFinish.Description
+local dungeonEnd = game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("MissionRewards").MissionRewards.RaidClear
+
+if a == 21 then -- Prison Tower
+    towerEnd:GetPropertyChangedSignal("Text"):Connect(function()
+        wait(20)
+        Dungeon(25,1)
+    end)
+elseif a == 23 then -- Atlantis tower
+    towerEnd:GetPropertyChangedSignal("Text"):Connect(function()
+        wait(20)
+        Dungeon(26,1)
+    end)
+elseif a == 27 then -- Mezuvian Tower
+    towerEnd:GetPropertyChangedSignal("Text"):Connect(function()
+        wait(20)
+        Dungeon(30,1)
+    end)
+elseif a == 29 then -- Oasis Tower
+    towerEnd:GetPropertyChangedSignal("Text"):Connect(function()
+        wait(20)
+        Dungeon(32,1)
+    end)
+elseif a == 32 and b == 1 then -- Treetop Trouble
+    dungeonEnd:GetPropertyChangedSignal("Text"):Connect(function()
+        wait(5)
+        Dungeon(32,5)
+    end)
+elseif a == 32 and b == 5 then -- Treetop Trouble Nightmare
+    dungeonEnd:GetPropertyChangedSignal("Text"):Connect(function()
+        wait(5)
+        Dungeon(33,1)
+    end)
+elseif a == 33 and b == 1 then -- Aether Fortress
+    dungeonEnd:GetPropertyChangedSignal("Text"):Connect(function()
+        wait(5)
+        Dungeon(33,5)
+    end)
+elseif a == 33 and b == 5 then -- Aether Fortress Nightmare
+    dungeonEnd:GetPropertyChangedSignal("Text"):Connect(function()
+        wait(5)
+        Dungeon(34)
+    end)
+elseif a == 34 then -- Aether Tower
+    task.defer(function()
+        while true do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.workspace.MissionObjects:WaitForChild("MinibossExit").Position)
+            game.RunService.Heartbeat:Wait()
+        end
+    end)
+    function tp(x)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").MissionObjects.BossChests[x].Position)
+    end
+    towerEnd:GetPropertyChangedSignal("Text"):Connect(function()
+        wait(6)
+        tp("Spawn0")
+        wait(1)
+        tp("Spawn1")
+        wait(1)
+        tp("Spawn2")
+        wait(1)
+        tp("Spawn3")
+        wait(1)
+        tp("Spawn4")
+        wait(3)
+        game:Shutdown()
+    end) 
+end
