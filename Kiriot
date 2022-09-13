@@ -30,4 +30,9 @@ elseif a == 29 then -- Oasis Tower
         wait(20)
         Dungeon(32,1)
     end)
+elseif a == 34 then -- Aether Tower
+    towerEnd:GetPropertyChangedSignal("Text"):Connect(function()
+        wait(20)
+        game:Shutdown()
+    end)
 end
