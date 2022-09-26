@@ -16,7 +16,7 @@ if a == 21 then -- Prison Tower
         wait(20)
         Dungeon(25,1)
     end)
-    towerFail:GetPropertyChangedSignal("Text"):Connect(function()
+    towerFail:GetPropertyChangedSignal("Text"):Once(function()
         Dungeon(21)
     end)
 elseif a == 23 then -- Atlantis tower
@@ -24,7 +24,7 @@ elseif a == 23 then -- Atlantis tower
         wait(20)
         Dungeon(26,1)
     end)
-    towerFail:GetPropertyChangedSignal("Text"):Connect(function()
+    towerFail:GetPropertyChangedSignal("Text"):Once(function()
         Dungeon(23)
     end)
 elseif a == 27 then -- Mezuvian Tower
@@ -32,7 +32,7 @@ elseif a == 27 then -- Mezuvian Tower
         wait(20)
         Dungeon(30,1)
     end)
-    towerFail:GetPropertyChangedSignal("Text"):Connect(function()
+    towerFail:GetPropertyChangedSignal("Text"):Once(function()
         Dungeon(27)
     end)
 elseif a == 29 then -- Oasis Tower
@@ -40,7 +40,7 @@ elseif a == 29 then -- Oasis Tower
         wait(20)
         Dungeon(32,1)
     end)
-    towerFail:GetPropertyChangedSignal("Text"):Connect(function()
+    towerFail:GetPropertyChangedSignal("Text"):Once(function()
         Dungeon(29)
     end)
 elseif a == 34 then -- Aether Tower
@@ -48,7 +48,7 @@ elseif a == 34 then -- Aether Tower
         wait(20)
         game:Shutdown()
     end)
-    towerFail:GetPropertyChangedSignal("Text"):Connect(function()
+    towerFail:GetPropertyChangedSignal("Text"):Once(function()
         Dungeon(34)
     end)
 end
